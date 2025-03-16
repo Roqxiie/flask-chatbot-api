@@ -10,23 +10,17 @@ from gtts import gTTS
 from dotenv import load_dotenv
 import dash
 from dash import dcc
-from dash import html
+import dash_html_components as html
 import plotly.express as px
 import pandas as pd
-from dash import dcc, html, Input, Output  # Fix missing import
-from dotenv import load_dotenv
+import dash.dependencies  # Fix missing import
 
-# Load environment variables from .env file
-load_dotenv()
-# Access environment variables
-openai_api_key = os.getenv("OPENAI_API_KEY")
-database_url = os.getenv("DATABASE_URL")
+# Load environment variables
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-print(f"OpenAI API Key: {openai_api_key}")  # For debugging (Remove in production)
-print(f"Database URL: {database_url}")  # For debugging
+
 # Initialize OpenAI Client
-client = openai.OpenAI()
-client.api_key = openai_api_key
+client = openai
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -188,4 +182,5 @@ def home():
 
 # Run Flask App
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)

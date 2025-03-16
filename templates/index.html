@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Ask Chatbot</h1>
+    <input type="text" id="question" placeholder="Type your question here..." size="50">
+    <button onclick="askChatbot()">Ask</button>
+    <h2>Response:</h2>
+    <p id="response"></p>
+
+    <script>
+        function askChatbot() {
+            let question = document.getElementById("question").value;
+            fetch("https://flask-chatbot-api-2.onrender.com/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "question": question })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").innerText = data.answer;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
