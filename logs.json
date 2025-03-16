@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2025-03-15T12:49:16.375340",
+        "user_query": "What is public policy?",
+        "ai_response": "Public policy is a system of laws, regulatory measures, courses of action, and funding priorities created by a governmental entity or its representatives. It addresses issues of public concern through legislation and governmental actions. These can include topics like health, education, housing, crime, defense, transportation, and environmental issues. Public policies are influenced by a variety of factors including public opinion, economic conditions, new scientific discoveries, technological change, and interest groups.",
+        "request_type": "chat",
+        "voice_output": true
+    }
+]

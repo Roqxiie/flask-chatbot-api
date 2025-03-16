@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Analytics Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Chatbot Logs Dashboard</h1>
+    <p>Total Queries: {{ total_queries }}</p>
+    <div id="chart"></div>
+
+    {% if graphJSON %}
+    <<script>
+        var barData = {{ bar_json | safe }};
+        var lineData = {{ line_json | safe }};
+        
+        Plotly.newPlot('chart', barData.data, barData.layout);
+        Plotly.newPlot('lineChart', lineData.data, lineData.layout);
+    </script>
+    
+    <h2>Chatbot Usage Over Time</h2>
+    <div id="lineChart"></div>    
+    {% else %}
+    <p>No data available yet.</p>
+    {% endif %}
+</body>
+</html>
