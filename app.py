@@ -9,16 +9,21 @@ from flask_cors import CORS
 from gtts import gTTS
 from dotenv import load_dotenv
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 import plotly.express as px
 import pandas as pd
-import dash.dependencies  # Fix missing import
+from dash import dcc, html, Input, Output  # Fix missing import
+from dotenv import load_dotenv
 
-# Load environment variables
+# Load environment variables from .env file
 load_dotenv()
+# Access environment variables
 openai_api_key = os.getenv("OPENAI_API_KEY")
+database_url = os.getenv("DATABASE_URL")
 
+print(f"OpenAI API Key: {openai_api_key}")  # For debugging (Remove in production)
+print(f"Database URL: {database_url}")  # For debugging
 # Initialize OpenAI Client
 client = openai.OpenAI()
 client.api_key = openai_api_key
